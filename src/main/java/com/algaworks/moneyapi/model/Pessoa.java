@@ -1,5 +1,6 @@
 package com.algaworks.moneyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,4 +26,9 @@ public class Pessoa {
     @NotNull
     private Boolean ativo;
 
+    @JsonIgnore
+    @Transient
+    public Boolean isInativo() {
+        return !this.ativo;
+    }
 }
